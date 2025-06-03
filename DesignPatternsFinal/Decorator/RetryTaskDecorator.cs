@@ -24,6 +24,7 @@ namespace DesignPatternsFinal.Decorator
                 {
                     attempt++;
                     base.Execute();
+                    Console.WriteLine($"Task attempt {attempt}: Executed Successfully");
                     break;
                 }
                 catch (Exception ex)

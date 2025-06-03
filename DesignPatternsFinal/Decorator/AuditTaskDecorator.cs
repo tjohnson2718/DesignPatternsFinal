@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DesignPatternsFinal.Decorator
 {
+    /// <summary>
+    /// Very similar to the logging task. This logs the execution of a method or task.
+    /// </summary>
     public class AuditTaskDecorator : TaskDecorator
     {
         public AuditTaskDecorator(ITaskComponent component) : base(component) { }

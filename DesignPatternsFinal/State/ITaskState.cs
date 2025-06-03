@@ -18,6 +18,8 @@ namespace DesignPatternsFinal.State
     /// 
     /// This pattern is useful in any project where an object’s behavior depends on its state,
     /// as it promotes cleaner code, easier state management, and open/closed principle compliance.
+    /// 
+    /// *Open/Closed Principle*: The State pattern allows you to add new states/features without modifying existing code
     /// </summary>
     public interface ITaskState
     {

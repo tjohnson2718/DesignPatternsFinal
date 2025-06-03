@@ -29,12 +29,12 @@ namespace Test.Builder
                 .Build();
 
             // Assert
-            Assert.AreEqual("Test Task", task.Title);
-            Assert.AreEqual("A test description", task.Description);
-            Assert.AreEqual(new DateTime(2025, 5, 28), task.DueDate);
-            Assert.AreEqual(2, task.Priority);
+            Assert.That(task.Title, Is.EqualTo("Test Task"));
+            Assert.That(task.Description, Is.EqualTo("A test description"));
+            Assert.That(task.DueDate, Is.EqualTo(new DateTime(2025, 5, 28)));
+            Assert.That(task.Priority, Is.EqualTo(2));
             CollectionAssert.AreEqual(new List<string> { "work", "urgent" }, task.Tags);
-            Assert.AreEqual(TimeSpan.FromHours(1), task.EstimatedDuration);
+            Assert.That(task.EstimatedDuration, Is.EqualTo(TimeSpan.FromHours(1)));
         }
 
         [Test]

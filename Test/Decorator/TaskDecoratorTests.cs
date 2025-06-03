@@ -48,7 +48,7 @@ namespace Test.Decorator
                 var output = sw.ToString();
                 StringAssert.Contains("Retry 1", output);
                 // Do NOT expect "Retry 2" since the second attempt succeeds
-                Assert.AreEqual(2, callCount);
+                Assert.That(callCount, Is.EqualTo(2));
             }
         }
 
