@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace DesignPatternsFinal.Decorator
 {
-    class LoggingTaskDecorator
+    public class LoggingTaskDecorator : TaskDecorator
     {
+        public LoggingTaskDecorator(ITaskComponent component) : base(component) { }
+
+        public override void Execute()
+        {
+            Console.WriteLine("Logging: Task execution started.");
+            base.Execute();
+            Console.WriteLine("Logging: Task execution finished.");
+        }
+        
+
     }
 }

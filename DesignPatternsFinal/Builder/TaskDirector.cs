@@ -9,6 +9,9 @@ namespace DesignPatternsFinal.Builder
 {
     /// <summary>
     /// Director: Defines the construction process for TaskItem objects.
+    /// These pre-defined construction processes are used for common tasks that
+    /// often are written multiple times.
+    /// 
     /// Uses an ITaskBuilder to build tasks with required or all properties.
     /// This separates the construction logic from the representation.
     /// </summary>

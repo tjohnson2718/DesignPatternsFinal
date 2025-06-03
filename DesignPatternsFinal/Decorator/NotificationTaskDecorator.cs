@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace DesignPatternsFinal.Decorator
 {
-    class NotificationTaskDecorator
+    public class NotificationTaskDecorator : TaskDecorator
     {
+        public NotificationTaskDecorator(ITaskComponent component) : base(component) { }
+        public override void Execute()
+        {
+            base.Execute();
+            Console.WriteLine("Notification: Execution logic has been performed");
+        }
     }
 }

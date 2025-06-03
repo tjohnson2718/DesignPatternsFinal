@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DesignPatternsFinal.State;
 
 namespace DesignPatternsFinal.Models
 {
@@ -16,6 +17,14 @@ namespace DesignPatternsFinal.Models
         public string? Description { get; set; }
         public DateTime? DueDate { get; set; }
         public int Priority { get; set; } = 0;
+        public List<string> Tags { get; set; } = new();
+        public TimeSpan? EstimatedDuration { get; set; }
+        public TaskContext StateContext { get; set; }
+
+        public TaskItem()
+        {
+            StateContext = new TaskContext(this);
+        }
 
     }
 }

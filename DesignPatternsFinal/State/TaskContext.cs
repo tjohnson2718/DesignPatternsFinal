@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DesignPatternsFinal.State;
+using DesignPatternsFinal.Models;
 
 namespace DesignPatternsFinal.State
 {
@@ -15,12 +16,14 @@ namespace DesignPatternsFinal.State
     public class TaskContext
     {
         private ITaskState _state;
+        public TaskItem Task { get; set; }
 
         /// <summary>
         /// Initializes the context with the default state (Pending).
         /// </summary>
-        public TaskContext()
+        public TaskContext(TaskItem task)
         {
+            Task = task;
             _state = new PendingState();
         }
 
@@ -35,14 +38,29 @@ namespace DesignPatternsFinal.State
         /// <summary>
         /// Triggers the current state's Handle method, which may transition to another state.
         /// </summary>
-        public void NextState()
+        public string NextState()
         {
-            _state.Handle(this);
+            return _state.Handle(this);
         }
 
         /// <summary>
         /// Gets the name of the current state.
         /// </summary>
         public string GetStateName() => _state.StateName;
+
+        /// <summary>
+        /// Performs an edit operation on the task, using the state-specific behavior.
+        /// </summary>
+        public string Edit(Action<TaskItem> editAction) => _state.Edit(this, editAction);
+
+        /// <summary>
+        /// Cancels the task, trasitioning to the Cancelled state if applicable.
+        /// </summary>
+        public string Cancel() => _state.Cancel(this);
+
+        /// <summary>
+        /// Performs the execution logic for the current state, using the state specific behavior.
+        /// </summary>
+        public string Execute() => _state.Execute(this);
     }
 }

@@ -7,11 +7,11 @@ using DesignPatternsFinal.Models;
 
 namespace DesignPatternsFinal.State
 {
-    public class CompletedState : ITaskState
+    public class CancelledState : ITaskState
     {
-        public string StateName => "Completed";
-        public string StateHandleText { get; set; } = "Task is already completed.";
-        public string StateExecuteText { get; set; } = "Task is already completed.";
+        public string StateName => "Cancelled";
+        public string StateHandleText { get; set; } = "Task is cancelled and cannot transition.";
+        public string StateExecuteText { get; set; } = "Cannot execute a cancelled task.";
 
         public string Handle(TaskContext context)
         {
@@ -20,13 +20,13 @@ namespace DesignPatternsFinal.State
 
         public string Edit(TaskContext context, Action<TaskItem> editAction)
         {
-            string text = "Cannot edit a completed task.";
+            string text = "Cannot edit a cancelled task.";
             return text;
         }
 
         public string Cancel(TaskContext context)
         {
-            string text = "Cannot cancel a completed task.";
+            string text = "Task is already cancelled.";
             return text;
         }
 
